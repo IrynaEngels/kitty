@@ -1,6 +1,8 @@
 package com.example.kapusta.kittycards;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -28,6 +30,7 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
     Button buy;
     TextView showScore;
     int score;
+    SharedPreferences scoreSave;
 
     private GestureDetector mGestureDetector;
     private static final int SWIPE_MIN_DISTANCE = 120;
@@ -39,7 +42,7 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop1);
 
-        score = getIntent().getIntExtra("score", 0);
+//        score = getIntent().getIntExtra("score", 0);
 
         mImageSwitcher = (ImageSwitcher)findViewById(R.id.imageSwitcher);
         mImageSwitcher.setFactory(this);
@@ -50,6 +53,11 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
         mGestureDetector = new GestureDetector(this, this);
         buy = (Button) findViewById(R.id.buy);
         showScore = (TextView) findViewById(R.id.showScore);
+        loadScore();
+    }
+    public  void loadScore() {
+        scoreSave = getSharedPreferences("Prefs", Context.MODE_WORLD_READABLE);
+        score = scoreSave.getInt("Score", 0);
         showScore.setText("Your score is " + score);
     }
 

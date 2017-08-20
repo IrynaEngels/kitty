@@ -8,7 +8,16 @@ import android.widget.ImageView;
  */
 
 public class Kitty {
+    int card = R.drawable.kitty;
     public Kitty() {
+    }
+
+    public int getCard() {
+        return card;
+    }
+
+    public void setCard(int card) {
+        this.card = card;
     }
 
     public void setBackground(final ImageView iv1, final ImageView iv2){

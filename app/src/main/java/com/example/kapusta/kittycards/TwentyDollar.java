@@ -1,11 +1,14 @@
 package com.example.kapusta.kittycards;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.content.SharedPreferences.Editor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -19,13 +22,14 @@ public class TwentyDollar extends AppCompatActivity implements View.OnClickListe
 
     ImageView imgLeft;
     ImageView imgRight;
+    ImageView toStore;
     TextView scoreShow;
     TextView comboShow;
-    Button toStore;
     int score = 20;
     int combo = 0;
     Kitty kitty = new Kitty();
     int cat;
+    SharedPreferences scoreSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +43,18 @@ public class TwentyDollar extends AppCompatActivity implements View.OnClickListe
         imgRight =(ImageView) findViewById(R.id.imageRight);
         scoreShow = (TextView) findViewById(R.id.scoreShow);
         comboShow = (TextView) findViewById(R.id.comboShow);
-        toStore = (Button) findViewById(R.id.toStore);
+        toStore = (ImageView) findViewById(R.id.toStore);
 
         imgLeft.setOnClickListener(this);
         imgRight.setOnClickListener(this);
-        scoreShow.setText("Score: " + score);
-        comboShow.setText("Combo: " + combo);
+        scoreShow.setText(" " + score);
+        comboShow.setText(" " + combo);
     }
 
     public void toStore(View v){
         Intent intent = new Intent(TwentyDollar.this, Shop1.class);
         intent.putExtra("score", score);
         startActivity(intent);
-
     }
     @Override
     public void onClick(View v) {
@@ -101,14 +104,22 @@ public class TwentyDollar extends AppCompatActivity implements View.OnClickListe
             }
             kitty.setBackground(imgLeft, imgRight);
 
-            scoreShow.setText("Score: " + score);
-            comboShow.setText("Combo: " + combo);
+            scoreShow.setText(" " + score);
+            comboShow.setText(" " + combo);
 
         }
         else {
             Toast toast = Toast.makeText(this, "Sorry, you don't have enough money", Toast.LENGTH_SHORT);
             toast.show();
         }
+        saveScore();
+    }
+
+    public void saveScore() {
+        scoreSave = getSharedPreferences("Prefs", Context.MODE_WORLD_WRITEABLE);
+        Editor ed = scoreSave.edit();
+        ed.putInt("Score", score);
+        ed.commit();
     }
 
     public void comboMultipiesScore(){

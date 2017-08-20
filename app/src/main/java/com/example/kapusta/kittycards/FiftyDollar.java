@@ -1,5 +1,8 @@
 package com.example.kapusta.kittycards;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
@@ -17,10 +20,12 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
     ImageView imgLeftBottom;
     ImageView imgRightTop;
     ImageView imgRightBottom;
+    ImageView toStore;
     TextView scoreShow;
     TextView comboShow;
     int score = 50;
     int combo = 0;
+    SharedPreferences scoreSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +38,19 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
         imgRightBottom =(ImageView) findViewById(R.id.imageRightBottom);
         scoreShow = (TextView) findViewById(R.id.scoreShow);
         comboShow = (TextView) findViewById(R.id.comboShow);
+        toStore = (ImageView) findViewById(R.id.toStore);
 
         imgLeftTop.setOnClickListener(this);
         imgLeftBottom.setOnClickListener(this);
         imgRightTop.setOnClickListener(this);
         imgRightBottom.setOnClickListener(this);
-        scoreShow.setText("Score: " + score);
-        comboShow.setText("Combo: " + combo);
+        scoreShow.setText(" " + score);
+        comboShow.setText(" " + combo);
+    }
+    public void toStore(View v){
+        Intent intent = new Intent(FiftyDollar .this, Shop1.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
     }
 
     @Override
@@ -155,8 +166,14 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
             Toast toast = Toast.makeText(this, "Sorry, you don't have enough money", Toast.LENGTH_SHORT);
             toast.show();
         }
-        scoreShow.setText("Score: " + score);
-        comboShow.setText("Combo: " + combo);
-
+        scoreShow.setText(" " + score);
+        comboShow.setText(" " + combo);
+        saveScore();
+    }
+    public void saveScore() {
+        scoreSave = getSharedPreferences("Prefs", Context.MODE_WORLD_WRITEABLE);
+        SharedPreferences.Editor ed = scoreSave.edit();
+        ed.putInt("Score", score);
+        ed.commit();
     }
 }

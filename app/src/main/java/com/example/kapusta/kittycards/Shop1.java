@@ -31,6 +31,8 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
     TextView showScore;
     int score;
     SharedPreferences scoreSave;
+    SharedPreferences image;
+    private SharedPreferences mPreferences;
 
     private GestureDetector mGestureDetector;
     private static final int SWIPE_MIN_DISTANCE = 120;
@@ -42,8 +44,21 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop1);
 
-//        score = getIntent().getIntExtra("score", 0);
 
+        String saveDefault = "";
+        for (int n = 0; n < bought.length; n++) {
+            saveDefault = saveDefault + "false" + "|$|SEPARATOR|$|";
+        }
+        mPreferences = getPreferences(this.MODE_PRIVATE);
+        String mem = mPreferences.getString("memory", saveDefault);
+        String[] array = getArray(mem); //see below for the getArray() method
+        for(int n = 0; n < array.length; n++){
+            if(array[n].equals("true")){
+                bought[n] = true;
+            } else {
+                bought[n] = false;
+            }
+        }
         mImageSwitcher = (ImageSwitcher)findViewById(R.id.imageSwitcher);
         mImageSwitcher.setFactory(this);
 
@@ -54,7 +69,14 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
         buy = (Button) findViewById(R.id.buy);
         showScore = (TextView) findViewById(R.id.showScore);
         loadScore();
+
+
+
     }
+    public static String[] getArray(String input) {
+        return input.split("\\|\\$\\|SEPARATOR\\|\\$\\|");
+    }
+
     public  void loadScore() {
         scoreSave = getSharedPreferences("Prefs", Context.MODE_WORLD_READABLE);
         score = scoreSave.getInt("Score", 0);
@@ -81,6 +103,19 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
                     score -= 50;
                     showScore.setText("Your score is " + score);
                     bought[position] = true;
+                    String save = "";
+                    for (int n = 0; n < bought.length; n++) {
+
+                            if(bought[n]) {
+                                save = save + "true" + "|$|SEPARATOR|$|";
+                            } else {
+                                save = save + "false" + "|$|SEPARATOR|$|";
+                            }
+                        }
+                    mPreferences = getPreferences(this.MODE_PRIVATE);
+                    SharedPreferences.Editor ed1 = mPreferences.edit();
+                    ed1.putString("memory", save);
+                    ed1.commit();
                     mImageSwitcher.setImageResource(mImageIdsBought[position]);
                 }
                 else  {
@@ -90,9 +125,10 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
                 break;
             case R.id.set:
                 if (bought[position]) {
-                    Intent intent = new Intent(Shop1.this, TwentyDollar.class);
-                    intent.putExtra("cat1", mImageIdsBought[position]);
-                    startActivity(intent);
+                    image = getSharedPreferences("Prefs1", Context.MODE_WORLD_WRITEABLE);
+                    SharedPreferences.Editor ed = image.edit();
+                    ed.putInt("Image", mImageIdsBought[position]);
+                    ed.commit();
                 }
                 break;
 

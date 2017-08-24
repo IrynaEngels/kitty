@@ -26,11 +26,16 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
     int score = 50;
     int combo = 0;
     SharedPreferences scoreSave;
+    SharedPreferences image;
+    int cat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fifty_dollar);
+
+        image = getSharedPreferences("Prefs1", Context.MODE_WORLD_READABLE);
+        cat = image.getInt("Image", R.drawable.kitty);
 
         imgLeftTop =(ImageView) findViewById(R.id.imageLeftTop);
         imgLeftBottom =(ImageView) findViewById(R.id.imageLeftBottom);
@@ -72,17 +77,17 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
                             score += 50;
                             combo++;
                             mrrr.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 3 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -92,18 +97,18 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
                         if (random % 4 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 3 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             score += 50;
                             combo++;
                             mrrr.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -112,18 +117,18 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
                         if (random % 4 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 3 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             score += 50;
                             combo++;
                             mrrr.start();
                         } else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -132,17 +137,17 @@ public class FiftyDollar extends AppCompatActivity implements View.OnClickListen
                         if (random % 4 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 3 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             score += 50;
                             combo++;
                             mrrr.start();

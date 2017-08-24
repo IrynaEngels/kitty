@@ -27,11 +27,16 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
     int score = 100;
     int combo = 0;
     SharedPreferences scoreSave;
+    SharedPreferences image;
+    int cat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hundred_dollar);
+
+        image = getSharedPreferences("Prefs1", Context.MODE_WORLD_READABLE);
+        cat = image.getInt("Image", R.drawable.kitty);
 
         imgLeftTop =(ImageView) findViewById(R.id.imageLeftTop);
         imgLeftBottom =(ImageView) findViewById(R.id.imageLeftBottom);
@@ -81,25 +86,25 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                             score += 100;
                             combo++;
                             mrrr.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -109,26 +114,26 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                         if (random % 6 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             score += 100;
                             combo++;
                             mrrr.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -137,26 +142,26 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                         if (random % 6 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             score += 100;
                             combo++;
                             mrrr.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -165,26 +170,26 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                         if (random % 6 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             score += 100;
                             combo++;
                             mrrr.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -193,26 +198,26 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                         if (random % 6 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             score += 100;
                             combo++;
                             mrrr.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }
@@ -221,25 +226,25 @@ public class HundredDollar extends AppCompatActivity implements View.OnClickList
                         if (random % 6 == 0) {
                             combo = 0;
                             meow.start();
-                            imgLeftTop.setImageResource(R.drawable.kittysecond);
+                            imgLeftTop.setImageResource(cat);
                         } else if (random % 5 == 0) {
-                            imgLeftBottom.setImageResource(R.drawable.kittysecond);
+                            imgLeftBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 4 == 0) {
-                            imgCenterTop.setImageResource(R.drawable.kittysecond);
+                            imgCenterTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 3 == 0) {
-                            imgCenterBottom.setImageResource(R.drawable.kittysecond);
+                            imgCenterBottom.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         } else if (random % 2 == 0) {
-                            imgRightTop.setImageResource(R.drawable.kittysecond);
+                            imgRightTop.setImageResource(cat);
                             combo = 0;
                             meow.start();
                         }else {
-                            imgRightBottom.setImageResource(R.drawable.kittysecond);
+                            imgRightBottom.setImageResource(cat);
                             score += 100;
                             combo++;
                             mrrr.start();

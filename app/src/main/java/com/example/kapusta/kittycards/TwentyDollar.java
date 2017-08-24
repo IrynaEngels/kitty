@@ -30,14 +30,17 @@ public class TwentyDollar extends AppCompatActivity implements View.OnClickListe
     Kitty kitty = new Kitty();
     int cat;
     SharedPreferences scoreSave;
+    SharedPreferences image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twenty_dollar);
 
+        image = getSharedPreferences("Prefs1", Context.MODE_WORLD_READABLE);
+        cat = image.getInt("Image", R.drawable.kitty);
 
-        cat = getIntent().getIntExtra("cat1", R.drawable.kitty);
+//        cat = getIntent().getIntExtra("cat1", R.drawable.kitty);
 
         imgLeft =(ImageView) findViewById(R.id.imageLeft);
         imgRight =(ImageView) findViewById(R.id.imageRight);

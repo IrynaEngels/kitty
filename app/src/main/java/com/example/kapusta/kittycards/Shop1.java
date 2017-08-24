@@ -63,7 +63,11 @@ public class Shop1 extends AppCompatActivity implements ViewSwitcher.ViewFactory
         mImageSwitcher.setFactory(this);
 
 
-        mImageSwitcher.setImageResource(mImageIds[0]);
+        if(bought[position]){
+            mImageSwitcher.setImageResource(mImageIdsBought[0]);
+        }else {
+            mImageSwitcher.setImageResource(mImageIds[0]);
+        }
 
         mGestureDetector = new GestureDetector(this, this);
         buy = (Button) findViewById(R.id.buy);
